@@ -17,11 +17,10 @@ class FakeModel(models.Model):
             cls,
             no_style(),
             [])
-        create_sql = '\n'.join(raw_sql).encode('utf-8')
         cls.delete_table()
         cursor = connection.cursor()
         try:
-            cursor.execute(create_sql)
+            cursor.execute(*raw_sql)
         finally:
             cursor.close()
 
