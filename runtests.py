@@ -1,11 +1,9 @@
 import sys
 
 try:
-    from django.core.management import setup_environ
     from django.conf import settings
     from django.test.utils import get_runner
 
-    setup_environ(settings)
     settings.configure(
         DEBUG=True,
         USE_TZ=True,
@@ -23,6 +21,11 @@ try:
         ],
         SITE_ID=1,
         MIDDLEWARE_CLASSES=(),
+        CACHES={
+            'default': {
+                'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+            }
+        },
     )
 
     try:
