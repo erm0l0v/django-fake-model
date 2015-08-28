@@ -1,10 +1,15 @@
 import sys
+import os
+
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'env_settings.settings')
 
 try:
     from django.conf import settings
     from django.test.utils import get_runner
 
     settings.configure(
+        DEBUG=True,
         DATABASES={
             "default": {
                 "ENGINE": "django.db.backends.sqlite3",
