@@ -21,7 +21,6 @@ try:
         ],
         SITE_ID=1,
         MIDDLEWARE_CLASSES=(),
-        CACHES={},
     )
 
     try:
