@@ -4,6 +4,7 @@ try:
     from django.conf import settings
     from django.test.utils import get_runner
 
+    settings.configure()
     settings.configure(
         DEBUG=True,
         USE_TZ=True,
