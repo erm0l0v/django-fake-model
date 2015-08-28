@@ -10,3 +10,4 @@ DATABASES = {
 INSTALLED_APPS = [
     "django_fake_model",
 ]
+SECRET_KEY = '_'
