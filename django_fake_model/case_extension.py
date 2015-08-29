@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 from django.test import TestCase
 
 
-class TestCaseExtension(TestCase):
+class CaseExtension(TestCase):
 
     _models = tuple()
 
@@ -11,12 +11,12 @@ class TestCaseExtension(TestCase):
         cls._models += (model, )
 
     def _pre_setup(self):
-        super(TestCaseExtension, self)._pre_setup()
+        super(CaseExtension, self)._pre_setup()
         self._map_over_temporary_models('create_table')
 
     def _post_teardown(self):
         self._map_over_temporary_models('delete_table')
-        super(TestCaseExtension, self)._post_teardown()
+        super(CaseExtension, self)._post_teardown()
 
     def _map_over_temporary_models(self, method_name):
         for model in self._models:

@@ -3,7 +3,7 @@ from functools import wraps
 from django.core.management.color import no_style
 from django.db import connection, models
 from django.test import TestCase
-from django_fake_model.test_case_extension import TestCaseExtension
+from django_fake_model.case_extension import CaseExtension
 
 
 class FakeModel(models.Model):
@@ -43,8 +43,8 @@ class FakeModel(models.Model):
 
     @classmethod
     def _class_extension(cls, source):
-        if not issubclass(source, TestCaseExtension):
-            class __wrap_class__ (source, TestCaseExtension):
+        if not issubclass(source, CaseExtension):
+            class __wrap_class__ (source, CaseExtension):
                 pass
             source = __wrap_class__
         source.append_model(cls)
