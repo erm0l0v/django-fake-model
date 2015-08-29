@@ -8,18 +8,6 @@ try:
     from django.conf import settings
     from django.test.utils import get_runner
 
-    # settings.configure(
-    #     DEBUG=True,
-    #     DATABASES={
-    #         "default": {
-    #             "ENGINE": "django.db.backends.sqlite3",
-    #         }
-    #     },
-    #     INSTALLED_APPS=[
-    #         "django_fake_model",
-    #     ],
-    # )
-
     try:
         import django
         setup = django.setup
