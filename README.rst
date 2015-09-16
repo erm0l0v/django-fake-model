@@ -24,7 +24,32 @@ Install django-fake-model::
 
 Then use it in a project::
 
-    import django_fake_model
+    from django_fake_model import models as f
+    from django.db import models
+    from django.test import TestCase
+    
+    
+    class MyFakeModel(f.FakeModel):
+
+        name = models.CharField(max_length=100)
+    
+    
+    @MyFakeModel.fake_me
+    class MyFakeModelTests(TestCase):
+
+        def test_create_model(self):
+            MyFakeModel.objects.create(name='123')
+            model = MyFakeModel.objects.get(name='123')
+            self.assertEqual(model.name, '123')
+    
+    
+    class MyFakeModelFunctionTest(TestCase):
+
+        @MyFakeModel.fake_me
+        def test_create_model(self):
+            MyFakeModel.objects.create(name='123')
+            model = MyFakeModel.objects.get(name='123')
+            self.assertEqual(model.name, '123')
 
 Features
 --------
