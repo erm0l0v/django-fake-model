@@ -10,10 +10,6 @@ django-fake-model
 
 Simple library for creating fake models in the unit tests.
 
-Documentation
--------------
-
-The full documentation is at https://django-fake-model.readthedocs.org.
 
 Quickstart
 ----------
