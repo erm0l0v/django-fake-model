@@ -7,12 +7,23 @@ from django_fake_model.case_extension import CaseExtension
 
 
 class FakeModel(models.Model):
+    """
+        FakeModel
+
+        Base class for all fake model.
+    """
 
     class Meta:
         abstract = True
 
     @classmethod
     def create_table(cls):
+        """
+        create_table
+
+        Manually create a temporary table for model in test data base.
+        :return:
+        """
         raw_sql, refs = connection.creation.sql_create_model(
             cls,
             no_style(),
@@ -26,6 +37,12 @@ class FakeModel(models.Model):
 
     @classmethod
     def delete_table(cls):
+        """
+        delete_table
+
+        Manually delete a temporary table for model in test data base.
+        :return:
+        """
         cursor = connection.cursor()
         try:
             cursor.execute('DROP TABLE IF EXISTS {0}'.format(cls._meta.db_table))
@@ -34,6 +51,16 @@ class FakeModel(models.Model):
 
     @classmethod
     def fake_me(cls, source):
+        """
+        fake_me
+
+        Class or method decorator
+
+        Class decorator: create temporary table for all tests in TestCase.
+        Method decorator: create temporary model only for given test method.
+        :param source: TestCase or test function
+        :return:
+        """
         if source and type(source) == type and issubclass(source, TestCase):
             return cls._class_extension(source)
         elif hasattr(source, '__call__'):
