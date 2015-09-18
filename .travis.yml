@@ -1,14 +1,17 @@
 language: python
 
 env:
+    - TOX_ENV=py35-dj18-sqlite
     - TOX_ENV=py34-dj18-sqlite
     - TOX_ENV=py33-dj18-sqlite
     - TOX_ENV=py32-dj18-sqlite
     - TOX_ENV=py27-dj18-sqlite
+    - TOX_ENV=py35-dj17-sqlite
     - TOX_ENV=py34-dj17-sqlite
     - TOX_ENV=py33-dj17-sqlite
     - TOX_ENV=py32-dj17-sqlite
     - TOX_ENV=py27-dj17-sqlite
+    - TOX_ENV=py35-dj16-sqlite
     - TOX_ENV=py34-dj16-sqlite
     - TOX_ENV=py33-dj16-sqlite
     - TOX_ENV=py32-dj16-sqlite
@@ -17,15 +20,19 @@ env:
     - TOX_ENV=py27-djmaster-sqlite
     - TOX_ENV=py32-djmaster-sqlite
     - TOX_ENV=py33-djmaster-sqlite
+    - TOX_ENV=py35-djmaster-sqlite
     - TOX_ENV=py34-djmaster-sqlite
+    - TOX_ENV=py35-dj18-postgres
     - TOX_ENV=py34-dj18-postgres
     - TOX_ENV=py33-dj18-postgres
     - TOX_ENV=py32-dj18-postgres
     - TOX_ENV=py27-dj18-postgres
+    - TOX_ENV=py35-dj17-postgres
     - TOX_ENV=py34-dj17-postgres
     - TOX_ENV=py33-dj17-postgres
     - TOX_ENV=py32-dj17-postgres
     - TOX_ENV=py27-dj17-postgres
+    - TOX_ENV=py35-dj16-postgres
     - TOX_ENV=py34-dj16-postgres
     - TOX_ENV=py33-dj16-postgres
     - TOX_ENV=py32-dj16-postgres
@@ -34,15 +41,19 @@ env:
     - TOX_ENV=py27-djmaster-postgres
     - TOX_ENV=py32-djmaster-postgres
     - TOX_ENV=py33-djmaster-postgres
+    - TOX_ENV=py35-djmaster-postgres
     - TOX_ENV=py34-djmaster-postgres
+    - TOX_ENV=py35-dj18-mysql
     - TOX_ENV=py34-dj18-mysql
     - TOX_ENV=py33-dj18-mysql
     - TOX_ENV=py32-dj18-mysql
     - TOX_ENV=py27-dj18-mysql
+    - TOX_ENV=py35-dj17-mysql
     - TOX_ENV=py34-dj17-mysql
     - TOX_ENV=py33-dj17-mysql
     - TOX_ENV=py32-dj17-mysql
     - TOX_ENV=py27-dj17-mysql
+    - TOX_ENV=py35-dj16-mysql
     - TOX_ENV=py34-dj16-mysql
     - TOX_ENV=py33-dj16-mysql
     - TOX_ENV=py32-dj16-mysql
@@ -51,6 +62,7 @@ env:
     - TOX_ENV=py27-djmaster-mysql
     - TOX_ENV=py32-djmaster-mysql
     - TOX_ENV=py33-djmaster-mysql
+    - TOX_ENV=py35-djmaster-mysql
     - TOX_ENV=py34-djmaster-mysql
 
 matrix:
