@@ -4,7 +4,8 @@ from __future__ import unicode_literals
 DEBUG = True
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_fake_model',
     }
 }
 INSTALLED_APPS = [

@@ -1,31 +1,73 @@
 language: python
 
 env:
-    - TOX_ENV=py34-dj18
-    - TOX_ENV=py33-dj18
-    - TOX_ENV=py32-dj18
-    - TOX_ENV=py27-dj18
-    - TOX_ENV=py34-dj17
-    - TOX_ENV=py33-dj17
-    - TOX_ENV=py32-dj17
-    - TOX_ENV=py27-dj17
-    - TOX_ENV=py34-dj16
-    - TOX_ENV=py33-dj16
-    - TOX_ENV=py32-dj16
-    - TOX_ENV=py27-dj16
-    - TOX_ENV=py26-dj16
-    - TOX_ENV=py27-djmaster
-    - TOX_ENV=py32-djmaster
-    - TOX_ENV=py33-djmaster
-    - TOX_ENV=py34-djmaster
+    - TOX_ENV=py34-dj18-sqlite
+    - TOX_ENV=py33-dj18-sqlite
+    - TOX_ENV=py32-dj18-sqlite
+    - TOX_ENV=py27-dj18-sqlite
+    - TOX_ENV=py34-dj17-sqlite
+    - TOX_ENV=py33-dj17-sqlite
+    - TOX_ENV=py32-dj17-sqlite
+    - TOX_ENV=py27-dj17-sqlite
+    - TOX_ENV=py34-dj16-sqlite
+    - TOX_ENV=py33-dj16-sqlite
+    - TOX_ENV=py32-dj16-sqlite
+    - TOX_ENV=py27-dj16-sqlite
+    - TOX_ENV=py26-dj16-sqlite
+    - TOX_ENV=py27-djmaster-sqlite
+    - TOX_ENV=py32-djmaster-sqlite
+    - TOX_ENV=py33-djmaster-sqlite
+    - TOX_ENV=py34-djmaster-sqlite
+    - TOX_ENV=py34-dj18-postgres
+    - TOX_ENV=py33-dj18-postgres
+    - TOX_ENV=py32-dj18-postgres
+    - TOX_ENV=py27-dj18-postgres
+    - TOX_ENV=py34-dj17-postgres
+    - TOX_ENV=py33-dj17-postgres
+    - TOX_ENV=py32-dj17-postgres
+    - TOX_ENV=py27-dj17-postgres
+    - TOX_ENV=py34-dj16-postgres
+    - TOX_ENV=py33-dj16-postgres
+    - TOX_ENV=py32-dj16-postgres
+    - TOX_ENV=py27-dj16-postgres
+    - TOX_ENV=py26-dj16-postgres
+    - TOX_ENV=py27-djmaster-postgres
+    - TOX_ENV=py32-djmaster-postgres
+    - TOX_ENV=py33-djmaster-postgres
+    - TOX_ENV=py34-djmaster-postgres
+    - TOX_ENV=py34-dj18-mysql
+    - TOX_ENV=py33-dj18-mysql
+    - TOX_ENV=py32-dj18-mysql
+    - TOX_ENV=py27-dj18-mysql
+    - TOX_ENV=py34-dj17-mysql
+    - TOX_ENV=py33-dj17-mysql
+    - TOX_ENV=py32-dj17-mysql
+    - TOX_ENV=py27-dj17-mysql
+    - TOX_ENV=py34-dj16-mysql
+    - TOX_ENV=py33-dj16-mysql
+    - TOX_ENV=py32-dj16-mysql
+    - TOX_ENV=py27-dj16-mysql
+    - TOX_ENV=py26-dj16-mysql
+    - TOX_ENV=py27-djmaster-mysql
+    - TOX_ENV=py32-djmaster-mysql
+    - TOX_ENV=py33-djmaster-mysql
+    - TOX_ENV=py34-djmaster-mysql
 
 matrix:
   fast_finish: true
   allow_failures:
-    - env: TOX_ENV=py27-djmaster
-    - env: TOX_ENV=py32-djmaster
-    - env: TOX_ENV=py33-djmaster
-    - env: TOX_ENV=py34-djmaster
+    - env: TOX_ENV=py27-djmaster-sqlite
+    - env: TOX_ENV=py32-djmaster-sqlite
+    - env: TOX_ENV=py33-djmaster-sqlite
+    - env: TOX_ENV=py34-djmaster-sqlite
+    - env: TOX_ENV=py27-djmaster-postgres
+    - env: TOX_ENV=py32-djmaster-postgres
+    - env: TOX_ENV=py33-djmaster-postgres
+    - env: TOX_ENV=py34-djmaster-postgres
+    - env: TOX_ENV=py27-djmaster-mysql
+    - env: TOX_ENV=py32-djmaster-mysql
+    - env: TOX_ENV=py33-djmaster-mysql
+    - env: TOX_ENV=py34-djmaster-mysql
 
 before_install:
   - pip install codecov
