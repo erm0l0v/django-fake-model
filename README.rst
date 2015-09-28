@@ -10,15 +10,21 @@ django-fake-model
 
 Simple library for creating fake models in the unit tests.
 
+This simple library allows to create fake models in your test without migrations, test apps and test tables in your base. All tables that you need will created/removed during the test.
 
-Quickstart
-----------
+Install
+-------
 
 Install django-fake-model::
 
     pip install django-fake-model
 
-Then use it in a project::
+Quickstart
+----------
+
+Just create a model in any file (Ex: in your test) and add decorator **@YourModel.fake_me** to test method or test class.
+
+.. code:: python
 
     from django_fake_model import models as f
     from django.db import models
@@ -47,10 +53,6 @@ Then use it in a project::
             model = MyFakeModel.objects.get(name='123')
             self.assertEqual(model.name, '123')
 
-Features
---------
-
-* TODO
 
 Cookiecutter Tools Used in Making This Package
 ----------------------------------------------
