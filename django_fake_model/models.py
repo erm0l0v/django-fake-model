@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from functools import wraps
+import warnings
 from django.core.management.color import no_style
 from django.db import connection, models
 from django.test import TestCase
@@ -45,7 +46,9 @@ class FakeModel(models.Model):
         """
         cursor = connection.cursor()
         try:
-            cursor.execute('DROP TABLE IF EXISTS {0}'.format(cls._meta.db_table))
+            with warnings.catch_warnings():
+                warnings.filterwarnings('ignore', 'unknown table')
+                cursor.execute('DROP TABLE IF EXISTS {0}'.format(cls._meta.db_table))
         finally:
             cursor.close()
 
