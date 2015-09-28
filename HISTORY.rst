@@ -7,3 +7,9 @@ History
 ++++++++++++++++++
 
 * First release on PyPI.
+
+
+0.1.1 (2015-09-28)
+++++++++++++++++++
+
+* Added tests with different databases.
