@@ -71,14 +71,17 @@ matrix:
     - env: TOX_ENV=py27-djmaster-sqlite
     - env: TOX_ENV=py32-djmaster-sqlite
     - env: TOX_ENV=py33-djmaster-sqlite
+    - env: TOX_ENV=py35-djmaster-sqlite
     - env: TOX_ENV=py34-djmaster-sqlite
     - env: TOX_ENV=py27-djmaster-postgres
     - env: TOX_ENV=py32-djmaster-postgres
     - env: TOX_ENV=py33-djmaster-postgres
+    - env: TOX_ENV=py35-djmaster-postgres
     - env: TOX_ENV=py34-djmaster-postgres
     - env: TOX_ENV=py27-djmaster-mysql
     - env: TOX_ENV=py32-djmaster-mysql
     - env: TOX_ENV=py33-djmaster-mysql
+    - env: TOX_ENV=py35-djmaster-mysql
     - env: TOX_ENV=py34-djmaster-mysql
 
 before_install:
