@@ -68,6 +68,9 @@ matrix:
     - env: TOX_ENV=py32-djmaster-mysql
     - env: TOX_ENV=py33-djmaster-mysql
     - env: TOX_ENV=py34-djmaster-mysql
+    - env: TOX_ENV=py32-dj18-mysql
+    - env: TOX_ENV=py32-dj17-mysql
+    - env: TOX_ENV=py32-dj16-mysql
 
 before_install:
   - pip install codecov
