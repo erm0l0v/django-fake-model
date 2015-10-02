@@ -8,6 +8,10 @@ django-fake-model
 .. image:: https://travis-ci.org/erm0l0v/django-fake-model.png?branch=master
     :target: https://travis-ci.org/erm0l0v/django-fake-model
 
+.. image:: https://landscape.io/github/erm0l0v/django-fake-model/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/erm0l0v/django-fake-model/master
+   :alt: Code Health
+
 Simple library for creating fake models in the unit tests.
 
 This simple library allows to create fake models in your test without migrations, test apps and test tables in your base. All tables that you need will created/removed during the test.
