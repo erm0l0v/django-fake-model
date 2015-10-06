@@ -11,6 +11,9 @@ django-fake-model
 .. image:: https://landscape.io/github/erm0l0v/django-fake-model/master/landscape.svg?style=flat
    :target: https://landscape.io/github/erm0l0v/django-fake-model/master
    :alt: Code Health
+   
+.. image:: https://api.codacy.com/project/badge/235f71efbf3144178975bb3eb86964c8
+    :target: https://www.codacy.com/app/erm0l0v/django-fake-model
 
 Simple library for creating fake models in the unit tests.
 
