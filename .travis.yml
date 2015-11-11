@@ -4,9 +4,6 @@ language: python
 
 env:
 
-    - TOX_ENV=py26-dj15-sqlite
-    - TOX_ENV=py26-dj15-postgres
-    - TOX_ENV=py26-dj15-mysql
     - TOX_ENV=py26-dj16-sqlite
     - TOX_ENV=py26-dj16-postgres
     - TOX_ENV=py26-dj16-mysql
@@ -19,6 +16,9 @@ env:
     - TOX_ENV=py27-dj18-sqlite
     - TOX_ENV=py27-dj18-postgres
     - TOX_ENV=py27-dj18-mysql
+    - TOX_ENV=py27-dj19-sqlite
+    - TOX_ENV=py27-dj19-postgres
+    - TOX_ENV=py27-dj19-mysql
     - TOX_ENV=py27-djmaster-sqlite
     - TOX_ENV=py27-djmaster-postgres
     - TOX_ENV=py27-djmaster-mysql
@@ -31,6 +31,9 @@ env:
     - TOX_ENV=py32-dj18-sqlite
     - TOX_ENV=py32-dj18-postgres
     - TOX_ENV=py32-dj18-mysql
+    - TOX_ENV=py32-dj19-sqlite
+    - TOX_ENV=py32-dj19-postgres
+    - TOX_ENV=py32-dj19-mysql
     - TOX_ENV=py32-djmaster-sqlite
     - TOX_ENV=py32-djmaster-postgres
     - TOX_ENV=py32-djmaster-mysql
@@ -43,6 +46,9 @@ env:
     - TOX_ENV=py33-dj18-sqlite
     - TOX_ENV=py33-dj18-postgres
     - TOX_ENV=py33-dj18-mysql
+    - TOX_ENV=py33-dj19-sqlite
+    - TOX_ENV=py33-dj19-postgres
+    - TOX_ENV=py33-dj19-mysql
     - TOX_ENV=py33-djmaster-sqlite
     - TOX_ENV=py33-djmaster-postgres
     - TOX_ENV=py33-djmaster-mysql
@@ -55,6 +61,9 @@ env:
     - TOX_ENV=py34-dj18-sqlite
     - TOX_ENV=py34-dj18-postgres
     - TOX_ENV=py34-dj18-mysql
+    - TOX_ENV=py34-dj19-sqlite
+    - TOX_ENV=py34-dj19-postgres
+    - TOX_ENV=py34-dj19-mysql
     - TOX_ENV=py34-djmaster-sqlite
     - TOX_ENV=py34-djmaster-postgres
     - TOX_ENV=py34-djmaster-mysql
@@ -67,6 +76,9 @@ env:
     - TOX_ENV=py35-dj18-sqlite
     - TOX_ENV=py35-dj18-postgres
     - TOX_ENV=py35-dj18-mysql
+    - TOX_ENV=py35-dj19-sqlite
+    - TOX_ENV=py35-dj19-postgres
+    - TOX_ENV=py35-dj19-mysql
     - TOX_ENV=py35-djmaster-sqlite
     - TOX_ENV=py35-djmaster-postgres
     - TOX_ENV=py35-djmaster-mysql
@@ -103,6 +115,9 @@ matrix:
     - env: TOX_ENV=py35-dj18-sqlite
     - env: TOX_ENV=py35-dj18-postgres
     - env: TOX_ENV=py35-dj18-mysql
+    - env: TOX_ENV=py35-dj19-sqlite
+    - env: TOX_ENV=py35-dj19-postgres
+    - env: TOX_ENV=py35-dj19-mysql
     - env: TOX_ENV=py35-djmaster-sqlite
     - env: TOX_ENV=py35-djmaster-postgres
     - env: TOX_ENV=py35-djmaster-mysql
