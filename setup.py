@@ -28,7 +28,7 @@ if sys.argv[-1] == 'gen_travis':
     with open('.travis_tmp.yml', 'r') as tmp:
         template = ''.join(tmp.readlines())
     python_versions = ('py26', 'py27', 'py32', 'py33', 'py34', 'py35')
-    django_versions = ('16', '17', '18', '19', 'master')
+    django_versions = ('16', '17', '18', 'master')
     db_versions = ('sqlite', 'postgres', 'mysql')
     filter_envs = (lambda x: not (x[0] == 'py26' and x[1] != '16'))
     versions = list(filter(filter_envs, [(py, dj, db) for py in python_versions
