@@ -1,0 +1,21 @@
+language: python
+
+env:
+{0}
+
+matrix:
+  fast_finish: true
+  allow_failures:
+{1}
+
+before_install:
+  - pip install codecov
+
+install:
+  - pip install -r requirements-test.txt
+
+script:
+  - tox -e $TOX_ENV
+
+after_success:
+  - codecov

@@ -24,6 +24,25 @@ if sys.argv[-1] == 'tag':
     os.system("git push --tags")
     sys.exit()
 
+if sys.argv[-1] == 'gen_travis':
+    with open('.travis_tmp.yml', 'r') as tmp:
+        template = '\n'.join(tmp.readlines())
+    python_versions = ('py26', 'py27', 'py32', 'py33', 'py34', 'py35')
+    django_versions = ('15', '16', '17', '18', 'master')
+    db_versions = ('sqlite', 'postgres', 'mysql')
+    versions = [(py, dj, db) for py in python_versions
+                             for dj in django_versions
+                             for db in db_versions]
+    allow_failure = (lambda x: x[1] == 'master' or x[0] == 'py35' or
+                               (x[2] == 'mysql' and x[0] == 'py32' and x[1] in ['18', '17', '16']))
+    env_tpl = '    - TOX_ENV={0}-dj{1}-{2}'
+    envs = '\n'.join(map(lambda x: env_tpl.format(*x), versions))
+    failure_tpl = '    - env: TOX_ENV={0}-dj{1}-{2}'
+    failures = '\n'.join(map(lambda x: failure_tpl.format(*x), filter(allow_failure, versions)))
+    with open('.travis.yml', 'w') as result:
+        result.write(template.format(envs, failures))
+    sys.exit()
+
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
