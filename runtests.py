@@ -1,8 +1,4 @@
 import sys
-import os
-
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'env_settings.settings_sqlite')
 
 try:
     from django.conf import settings
@@ -35,7 +31,6 @@ def run_tests(*test_args):
 
     if failures:
         sys.exit(bool(failures))
-
 
 if __name__ == '__main__':
     run_tests(*sys.argv[1:])

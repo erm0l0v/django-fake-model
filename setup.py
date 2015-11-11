@@ -30,9 +30,11 @@ if sys.argv[-1] == 'gen_travis':
     python_versions = ('py26', 'py27', 'py32', 'py33', 'py34', 'py35')
     django_versions = ('15', '16', '17', '18', 'master')
     db_versions = ('sqlite', 'postgres', 'mysql')
-    versions = [(py, dj, db) for py in python_versions
-                             for dj in django_versions
-                             for db in db_versions]
+    filter_envs = (lambda x: not ((x[0] == 'py26' and x[1] not in ['15', '16'])
+                                  or (x[1] == '15' and x[0] != 'py26')))
+    versions = list(filter(filter_envs, [(py, dj, db) for py in python_versions
+                                                      for dj in django_versions
+                                                      for db in db_versions]))
     allow_failure = (lambda x: x[1] == 'master' or x[0] == 'py35' or
                                (x[2] == 'mysql' and x[0] == 'py32' and x[1] in ['18', '17', '16']))
     env_tpl = '    - TOX_ENV={0}-dj{1}-{2}'
