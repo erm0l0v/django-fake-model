@@ -1,4 +1,7 @@
 import sys
+import os
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'env_settings.settings_sqlite')
 
 try:
     from django.conf import settings

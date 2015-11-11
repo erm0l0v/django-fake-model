@@ -26,7 +26,7 @@ if sys.argv[-1] == 'tag':
 
 if sys.argv[-1] == 'gen_travis':
     with open('.travis_tmp.yml', 'r') as tmp:
-        template = '\n'.join(tmp.readlines())
+        template = ''.join(tmp.readlines())
     python_versions = ('py26', 'py27', 'py32', 'py33', 'py34', 'py35')
     django_versions = ('16', '17', '18', '19', 'master')
     db_versions = ('sqlite', 'postgres', 'mysql')
