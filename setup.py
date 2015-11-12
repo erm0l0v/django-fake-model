@@ -28,17 +28,19 @@ if sys.argv[-1] == 'gen_travis':
     with open('.travis_tmp.yml', 'r') as tmp:
         template = ''.join(tmp.readlines())
     python_versions = ('py26', 'py27', 'py32', 'py33', 'py34', 'py35')
-    django_versions = ('16', '17', '18', 'master')
+    django_versions = ('16', '17', '18', '19', 'master')
     db_versions = ('sqlite', 'postgres', 'mysql')
     filter_envs = (lambda x: not (x[0] == 'py26' and x[1] != '16'))
-    versions = list(filter(filter_envs, [(py, dj, db) for py in python_versions
+    test_versions = ('unittest', 'nose')
+    versions = list(filter(filter_envs, [(py, dj, db, ts) for py in python_versions
                                                       for dj in django_versions
-                                                      for db in db_versions]))
-    allow_failure = (lambda x: x[1] == 'master' or x[0] == 'py35' or
+                                                      for db in db_versions
+                                                      for ts in test_versions]))
+    allow_failure = (lambda x: x[1] == 'master' or x[0] == 'py35' or x[1] == '19' or
                                (x[2] == 'mysql' and x[0] == 'py32' and x[1] in ['18', '17', '16']))
-    env_tpl = '    - TOX_ENV={0}-dj{1}-{2}'
+    env_tpl = '    - TOX_ENV={0}-dj{1}-{2}-{3}'
     envs = '\n'.join(map(lambda x: env_tpl.format(*x), versions))
-    failure_tpl = '    - env: TOX_ENV={0}-dj{1}-{2}'
+    failure_tpl = '    - env: TOX_ENV={0}-dj{1}-{2}-{3}'
     failures = '\n'.join(map(lambda x: failure_tpl.format(*x), filter(allow_failure, versions)))
     with open('.travis.yml', 'w') as result:
         result.write(template.format(envs, failures))
