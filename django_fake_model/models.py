@@ -16,6 +16,7 @@ class FakeModel(models.Model):
 
     class Meta:
         abstract = True
+        app_label = 'django_fake_models'
 
     @classmethod
     def create_table(cls):
