@@ -26,7 +26,7 @@ class FakeModel(models.Model):
         Manually create a temporary table for model in test data base.
         :return:
         """
-        schema_editor = getattr(connection, 'schema_editor')
+        schema_editor = getattr(connection, 'schema_editor', None)
         if schema_editor:
             with schema_editor() as schema_editor:
                 schema_editor.create_model(cls)
@@ -50,7 +50,7 @@ class FakeModel(models.Model):
         Manually delete a temporary table for model in test data base.
         :return:
         """
-        schema_editor = getattr(connection, 'schema_editor')
+        schema_editor = getattr(connection, 'schema_editor', None)
         if schema_editor:
             with connection.schema_editor() as schema_editor:
                 schema_editor.delete_model(cls)
