@@ -64,6 +64,10 @@ Just create a model in any file (Ex: in your test) and add decorator **@YourMode
             model = MyFakeModel.objects.get(name='123')
             self.assertEqual(model.name, '123')
 
+TODO:
+-----
+
+* fix class decorator **@YourModel.fake_me** for nose tests
 
 Cookiecutter Tools Used in Making This Package
 ----------------------------------------------
