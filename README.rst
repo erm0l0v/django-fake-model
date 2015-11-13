@@ -15,6 +15,10 @@ django-fake-model
 .. image:: https://api.codacy.com/project/badge/235f71efbf3144178975bb3eb86964c8
     :target: https://www.codacy.com/app/erm0l0v/django-fake-model
 
+.. image:: https://requires.io/github/erm0l0v/django-fake-model/requirements.svg?branch=master
+     :target: https://requires.io/github/erm0l0v/django-fake-model/requirements/?branch=master
+     :alt: Requirements Status
+     
 Simple library for creating fake models in the unit tests.
 
 This simple library allows to create fake models in your test without migrations, test apps and test tables in your base. All tables that you need will created/removed during the test.
