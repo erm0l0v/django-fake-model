@@ -36,8 +36,10 @@ if sys.argv[-1] == 'gen_travis':
                                                       for dj in django_versions
                                                       for db in db_versions
                                                       for ts in test_versions]))
-    allow_failure = (lambda x: x[1] == 'master' or x[0] == 'py35' or x[1] == '19' or
-                               (x[2] == 'mysql' and x[0] == 'py32' and x[1] in ['18', '17', '16']))
+    allow_failure = (lambda x: x[1] == 'master'
+                               or x[0] == 'py35'
+                               or (x[1] == '19' and x[0] in ('py32', 'py33'))
+                               or (x[2] == 'mysql' and x[0] == 'py32' and x[1] in ['18', '17', '16']))
     env_tpl = '    - TOX_ENV={0}-dj{1}-{2}-{3}'
     envs = '\n'.join(map(lambda x: env_tpl.format(*x), versions))
     failure_tpl = '    - env: TOX_ENV={0}-dj{1}-{2}-{3}'

@@ -161,12 +161,6 @@ env:
 matrix:
   fast_finish: true
   allow_failures:
-    - env: TOX_ENV=py27-dj19-sqlite-unittest
-    - env: TOX_ENV=py27-dj19-sqlite-nose
-    - env: TOX_ENV=py27-dj19-postgres-unittest
-    - env: TOX_ENV=py27-dj19-postgres-nose
-    - env: TOX_ENV=py27-dj19-mysql-unittest
-    - env: TOX_ENV=py27-dj19-mysql-nose
     - env: TOX_ENV=py27-djmaster-sqlite-unittest
     - env: TOX_ENV=py27-djmaster-sqlite-nose
     - env: TOX_ENV=py27-djmaster-postgres-unittest
@@ -203,12 +197,6 @@ matrix:
     - env: TOX_ENV=py33-djmaster-postgres-nose
     - env: TOX_ENV=py33-djmaster-mysql-unittest
     - env: TOX_ENV=py33-djmaster-mysql-nose
-    - env: TOX_ENV=py34-dj19-sqlite-unittest
-    - env: TOX_ENV=py34-dj19-sqlite-nose
-    - env: TOX_ENV=py34-dj19-postgres-unittest
-    - env: TOX_ENV=py34-dj19-postgres-nose
-    - env: TOX_ENV=py34-dj19-mysql-unittest
-    - env: TOX_ENV=py34-dj19-mysql-nose
     - env: TOX_ENV=py34-djmaster-sqlite-unittest
     - env: TOX_ENV=py34-djmaster-sqlite-nose
     - env: TOX_ENV=py34-djmaster-postgres-unittest
