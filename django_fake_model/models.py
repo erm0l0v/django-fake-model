@@ -26,16 +26,21 @@ class FakeModel(models.Model):
         Manually create a temporary table for model in test data base.
         :return:
         """
-        raw_sql, refs = connection.creation.sql_create_model(
-            cls,
-            no_style(),
-            [])
-        cls.delete_table()
-        cursor = connection.cursor()
-        try:
-            cursor.execute(*raw_sql)
-        finally:
-            cursor.close()
+        schema_editor = getattr(connection, 'schema_editor')
+        if schema_editor:
+            with schema_editor() as schema_editor:
+                schema_editor.create_model(cls)
+        else:
+            raw_sql, refs = connection.creation.sql_create_model(
+                cls,
+                no_style(),
+                [])
+            cls.delete_table()
+            cursor = connection.cursor()
+            try:
+                cursor.execute(*raw_sql)
+            finally:
+                cursor.close()
 
     @classmethod
     def delete_table(cls):
@@ -45,13 +50,18 @@ class FakeModel(models.Model):
         Manually delete a temporary table for model in test data base.
         :return:
         """
-        cursor = connection.cursor()
-        try:
-            with warnings.catch_warnings():
-                warnings.filterwarnings('ignore', 'unknown table')
-                cursor.execute('DROP TABLE IF EXISTS {0}'.format(cls._meta.db_table))
-        finally:
-            cursor.close()
+        schema_editor = getattr(connection, 'schema_editor')
+        if schema_editor:
+            with connection.schema_editor() as schema_editor:
+                schema_editor.delete_model(cls)
+        else:
+            cursor = connection.cursor()
+            try:
+                with warnings.catch_warnings():
+                    warnings.filterwarnings('ignore', 'unknown table')
+                    cursor.execute('DROP TABLE IF EXISTS {0}'.format(cls._meta.db_table))
+            finally:
+                cursor.close()
 
     @classmethod
     def fake_me(cls, source):

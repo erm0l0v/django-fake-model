@@ -12,15 +12,15 @@ class CaseExtension(TestCase):
 
     def _pre_setup(self):
         super(CaseExtension, self)._pre_setup()
-        self._map_over_temporary_models('create_table')
+        self._map_models('create_table')
 
     def _post_teardown(self):
-        self._map_over_temporary_models('delete_table')
+        self._map_models('delete_table')
         super(CaseExtension, self)._post_teardown()
 
-    def _map_over_temporary_models(self, method_name):
+    def _map_models(self, method_name):
         for model in self._models:
             try:
                 getattr(model, method_name)()
             except AttributeError:
-                raise TypeError("{0} doesn't support table mgmt.".format(model))
+                raise TypeError("{0} doesn't support table method {1}".format(model, method_name))
