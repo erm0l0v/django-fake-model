@@ -13,3 +13,12 @@ History
 ++++++++++++++++++
 
 * Added tests with different databases.
+
+
+0.1.2 (2015-11-13)
+++++++++++++++++++
+
+* Added Django 1.9 support
+* Added travis config generator
+* Added nose tests
+* Remove tests for Django master
