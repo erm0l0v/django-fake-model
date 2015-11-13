@@ -39,7 +39,7 @@ def run_tests(*test_args):
 def run_nose_tests(*test_args):
     from django_nose import NoseTestSuiteRunner
 
-    test_runner = NoseTestSuiteRunner(verbosity=1)
+    test_runner = NoseTestSuiteRunner(test_args)
 
     failures = test_runner.run_tests(test_args)
 
@@ -50,6 +50,6 @@ def run_nose_tests(*test_args):
 if __name__ == '__main__':
     args = sys.argv[1:]
     if args and args[0] == 'nose':
-        run_tests(*args[1:])
+        run_nose_tests(*args[1:])
     else:
         run_tests(*args)
