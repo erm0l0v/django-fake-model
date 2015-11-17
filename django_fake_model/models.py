@@ -31,7 +31,7 @@ class FakeModel(models.Model):
             with schema_editor() as schema_editor:
                 schema_editor.create_model(cls)
         else:
-            raw_sql, refs = connection.creation.sql_create_model(
+            raw_sql, _ = connection.creation.sql_create_model(
                 cls,
                 no_style(),
                 [])
