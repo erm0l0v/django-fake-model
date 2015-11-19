@@ -18,6 +18,9 @@ django-fake-model
 .. image:: https://requires.io/github/erm0l0v/django-fake-model/requirements.svg?branch=master
      :target: https://requires.io/github/erm0l0v/django-fake-model/requirements/?branch=master
      :alt: Requirements Status
+
+.. image:: https://codecov.io/github/erm0l0v/django-fake-model/coverage.svg?branch=master
+    :target: https://codecov.io/github/erm0l0v/django-fake-model?branch=master
      
 Simple library for creating fake models in the unit tests.
 
