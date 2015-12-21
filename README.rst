@@ -11,7 +11,7 @@ django-fake-model
 .. image:: https://landscape.io/github/erm0l0v/django-fake-model/master/landscape.svg?style=flat
    :target: https://landscape.io/github/erm0l0v/django-fake-model/master
    :alt: Code Health
-   
+
 .. image:: https://api.codacy.com/project/badge/235f71efbf3144178975bb3eb86964c8
     :target: https://www.codacy.com/app/erm0l0v/django-fake-model
 
@@ -21,7 +21,7 @@ django-fake-model
 
 .. image:: https://codecov.io/github/erm0l0v/django-fake-model/coverage.svg?branch=master
     :target: https://codecov.io/github/erm0l0v/django-fake-model?branch=master
-     
+
 Simple library for creating fake models in the unit tests.
 
 This simple library allows to create fake models in your test without migrations, test apps and test tables in your base. All tables that you need will created/removed during the test.
@@ -43,13 +43,13 @@ Just create a model in any file (Ex: in your test) and add decorator **@YourMode
     from django_fake_model import models as f
     from django.db import models
     from django.test import TestCase
-    
-    
+
+
     class MyFakeModel(f.FakeModel):
 
         name = models.CharField(max_length=100)
-    
-    
+
+
     @MyFakeModel.fake_me
     class MyFakeModelTests(TestCase):
 
@@ -57,8 +57,8 @@ Just create a model in any file (Ex: in your test) and add decorator **@YourMode
             MyFakeModel.objects.create(name='123')
             model = MyFakeModel.objects.get(name='123')
             self.assertEqual(model.name, '123')
-    
-    
+
+
     class MyFakeModelFunctionTest(TestCase):
 
         @MyFakeModel.fake_me
@@ -66,6 +66,29 @@ Just create a model in any file (Ex: in your test) and add decorator **@YourMode
             MyFakeModel.objects.create(name='123')
             model = MyFakeModel.objects.get(name='123')
             self.assertEqual(model.name, '123')
+
+Development:
+------------
+
+To develop on this locally with `Docker`_, install the Docker Engine and
+`Docker Compose`_. Then you can build the Docker image and run the tests,
+defaulting to the Tox environment specified in the `Dockerfile`::
+
+    docker-compose run --rm test
+
+If you want to run the tests with different Docker and Python versionns,
+first rebuild the Docker image::
+
+    env TOX_ENV=py26-dj16-sqlite-nose docker-compose build
+
+Then you can re-run the tests::
+
+    docker-compose run --rm test
+
+
+.. _Docker: https://www.docker.com/
+.. _Docker Compose: https://docs.docker.com/compose/
+
 
 TODO:
 -----
