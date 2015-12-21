@@ -1,14 +1,34 @@
-FROM python:3
+FROM ubuntu
+# based off of https://github.com/themattrix/docker-tox/blob/79105882a37762972c0d1147ea09fba0d2e6f26e/Dockerfile
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+ENV DEBIAN_FRONTEND noninteractive
 
-COPY ./requirements-test.txt /usr/src/app/requirements-test.txt
-RUN pip install -r requirements-test.txt
+RUN apt-get update \
+    && apt-get -y install \
+       git \
+       libmysqlclient-dev \
+       libpq-dev \
+       mysql-server \
+       postgresql \
+       python-pip \
+       python-software-properties \
+       software-properties-common \
+       wget \
+    && add-apt-repository -y ppa:fkrull/deadsnakes \
+    && apt-get update \
+    && apt-get -y install \
+       python2.6-dev \
+       python2.7-dev \
+       python3.2-dev \
+       python3.3-dev \
+       python3.4-dev \
+       python3.5-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN pip install -U pip
+RUN pip install tox
 
-COPY . /usr/src/app
+WORKDIR /app/
+ADD . /app/
 
-ENV TOX_ENV ${TOX_ENV:-py35-dj19-sqlite-unittest}
-RUN tox -e $TOX_ENV --notest
-
-CMD coverage run --source django_fake_model runtests.py
+CMD tox
