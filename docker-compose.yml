@@ -1,4 +1,28 @@
 test:
   build: .
   volumes:
-    - .:/usr/src/app
+    - ./:/app/
+  links:
+    - pg
+    - mysql
+  environment:
+    PGHOST: pg
+    MYSQL_HOST: mysql
+    PGUSER: postgres
+    TOX_TESTENV_PASSENV: "PGHOST MYSQL_HOST PGUSER"
+  volumes_from:
+    - data
+
+data:
+  image: postgres
+  command: test
+  volumes:
+    - /root/.cache
+    - /app/.tox
+
+pg:
+  image: postgres
+mysql:
+  image: mysql
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: "True"

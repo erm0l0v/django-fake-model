@@ -1,0 +1,5 @@
+.tox
+*.egg-info
+*.pyc
+*/__pycache__/*
+django-fake-model-*

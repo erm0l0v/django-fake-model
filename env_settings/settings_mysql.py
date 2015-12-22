@@ -1,9 +1,12 @@
 from __future__ import unicode_literals
+import os
+
 
 DEBUG = True
 DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.mysql',
+        'HOST': os.environ.get('MYSQL_HOST', None),
         'NAME': 'django_fake_model',
     }
 }

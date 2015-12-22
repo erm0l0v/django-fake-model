@@ -71,19 +71,23 @@ Development:
 ------------
 
 To develop on this locally with `Docker`_, install the Docker Engine and
-`Docker Compose`_. Then you can build the Docker image and run the tests,
-defaulting to the Tox environment specified in the `Dockerfile`::
+`Docker Compose`_. Then you can build the Docker image and run the tests
+on all tox activities(this also uses a shared pip cache to reduce download
+times)::
 
+    docker-compose up -d pg mysql
     docker-compose run --rm test
 
-If you want to run the tests with different Docker and Python versionns,
-first rebuild the Docker image::
+If you wanna run just one Tox activity you can specify that as well::
 
-    env TOX_ENV=py26-dj16-sqlite-nose docker-compose build
+    docker-compose run --rm test tox -e py35-dj19-mysql-unittest
 
-Then you can re-run the tests::
+If you add any dependencies or change the tox configuration, you have
+to rebuild the image::
 
-    docker-compose run --rm test
+    docker-compose build
+
+It will share this folder with the Docker containers, so that
 
 
 .. _Docker: https://www.docker.com/
