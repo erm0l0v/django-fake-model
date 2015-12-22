@@ -6,11 +6,14 @@ DEBUG = True
 DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': os.environ.get('PGHOST', None),
-        'USER': os.environ.get('PGUSER', None),
         'NAME': 'django_fake_model',
     }
 }
+if 'PGHOST' in os.environ:
+    DATABASES['default']['HOST'] = os.environ['PGHOST']
+if 'PGUSER' in os.environ:
+    DATABASES['default']['USER'] = os.environ['PGUSER']
+
 INSTALLED_APPS = [
     "django_fake_model",
 ]

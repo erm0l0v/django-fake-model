@@ -6,10 +6,12 @@ DEBUG = True
 DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': os.environ.get('MYSQL_HOST', None),
         'NAME': 'django_fake_model',
     }
 }
+if 'MYSQL_HOST' in os.environ:
+    DATABASES['default']['HOST'] = os.environ['MYSQL_HOST']
+
 INSTALLED_APPS = [
     "django_fake_model",
 ]
