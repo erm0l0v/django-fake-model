@@ -9,12 +9,12 @@ class RelatedModel(f.FakeModel):
     text = models.CharField(max_length=400)
 
 
-class NyModel(f.FakeModel):
+class MyModel(f.FakeModel):
     text = models.CharField(max_length=400)
     related_model = models.ForeignKey(RelatedModel)
 
 
-@NyModel.fake_me
+@MyModel.fake_me
 @RelatedModel.fake_me
 class TestRelatedModelsClassDecorator(TransactionTestCase):
 
@@ -22,7 +22,7 @@ class TestRelatedModelsClassDecorator(TransactionTestCase):
         related_model = RelatedModel()
         related_model.text = 'qwerty'
         related_model.save()
-        my_model = NyModel()
+        my_model = MyModel()
         my_model.test = 'qwerty'
         my_model.related_model = related_model
         my_model.save()
@@ -33,58 +33,3 @@ class TestRelatedModelsClassDecorator(TransactionTestCase):
             self.fail(ex.message)
 
 
-# @RelatedModel.fake_me
-# @NyModel.fake_me
-# class TestRelatedModelsClassDecoratorChangeOrder(TransactionTestCase):
-
-#     def test_create_models(self):
-#         related_model = RelatedModel()
-#         related_model.text = 'qwerty'
-#         related_model.save()
-#         my_model = NyModel()
-#         my_model.test = 'qwerty'
-#         my_model.related_model = related_model
-#         my_model.save()
-#         try:
-#             self.assertIsNotNone(my_model)
-#             self.assertIsNotNone(related_model)
-#         except Exception as ex:
-#             self.fail(ex.message)
-
-
-# class TestRelatedModelsFunctionDecorator(TransactionTestCase):
-
-#     @NyModel.fake_me
-#     @RelatedModel.fake_me
-#     def test_create_models(self):
-#         related_model = RelatedModel()
-#         related_model.text = 'qwerty'
-#         related_model.save()
-#         my_model = NyModel()
-#         my_model.test = 'qwerty'
-#         my_model.related_model = related_model
-#         my_model.save()
-#         try:
-#             self.assertIsNotNone(my_model)
-#             self.assertIsNotNone(related_model)
-#         except Exception as ex:
-#             self.fail(ex.message)
-
-
-# class TestRelatedModelsFunctionDecoratorChangeOrder(TransactionTestCase):
-
-#     @RelatedModel.fake_me
-#     @NyModel.fake_me
-#     def test_create_models(self):
-#         related_model = RelatedModel()
-#         related_model.text = 'qwerty'
-#         related_model.save()
-#         my_model = NyModel()
-#         my_model.test = 'qwerty'
-#         my_model.related_model = related_model
-#         my_model.save()
-#         try:
-#             self.assertIsNotNone(my_model)
-#             self.assertIsNotNone(related_model)
-#         except Exception as ex:
-#             self.fail(ex.message)

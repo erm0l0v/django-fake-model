@@ -3,6 +3,12 @@
 History
 -------
 
+0.1.3 (2015-12-23)
+++++++++++++++++++
+
+* Fix issue #1 Multiple Fake Models. Thanks to Saul Shanabrook (@saulshanabrook)
+* Add support for developing with Docker. Thanks to Saul Shanabrook again
+
 0.1.2 (2015-11-13)
 ++++++++++++++++++
 
