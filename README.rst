@@ -42,7 +42,7 @@ Just create a model in any file (Ex: in your test) and add decorator **@YourMode
 
     from django_fake_model import models as f
     from django.db import models
-    from django.test import TestCase
+    from django.test import TestCase, TransactionTestCase
 
 
     class MyFakeModel(f.FakeModel):
@@ -66,6 +66,32 @@ Just create a model in any file (Ex: in your test) and add decorator **@YourMode
             MyFakeModel.objects.create(name='123')
             model = MyFakeModel.objects.get(name='123')
             self.assertEqual(model.name, '123')
+
+
+    class RelatedModel(f.FakeModel):
+        text = models.CharField(max_length=400)
+
+
+    class NyModel(f.FakeModel):
+        text = models.CharField(max_length=400)
+        related_model = models.ForeignKey(RelatedModel)
+
+
+    @NyModel.fake_me
+    @RelatedModel.fake_me
+    class TestRelatedModelsClassDecorator(TransactionTestCase):
+
+        def test_create_models(self):
+            related_model = RelatedModel()
+            related_model.text = 'qwerty'
+            related_model.save()
+            my_model = NyModel()
+            my_model.test = 'qwerty'
+            my_model.related_model = related_model
+            my_model.save()
+            self.assertIsNotNone(my_model)
+            self.assertIsNotNone(related_model)
+
 
 Development:
 ------------

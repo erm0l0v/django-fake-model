@@ -3,7 +3,7 @@ from functools import wraps
 import warnings
 from django.core.management.color import no_style
 from django.db import connection, models
-from django.test import TestCase
+from django.test import SimpleTestCase
 from django_fake_model.case_extension import CaseExtension
 
 
@@ -70,17 +70,17 @@ class FakeModel(models.Model):
 
         Class or method decorator
 
-        Class decorator: create temporary table for all tests in TestCase.
+        Class decorator: create temporary table for all tests in SimpleTestCase.
         Method decorator: create temporary model only for given test method.
-        :param source: TestCase or test function
+        :param source: SimpleTestCase or test function
         :return:
         """
-        if source and type(source) == type and issubclass(source, TestCase):
+        if source and type(source) == type and issubclass(source, SimpleTestCase):
             return cls._class_extension(source)
         elif hasattr(source, '__call__'):
             return cls._decorator(source)
         else:
-            raise AttributeError('source - must be a TestCase subclass of function')
+            raise AttributeError('source - must be a SimpleTestCase subclass of function')
 
     @classmethod
     def _class_extension(cls, source):
