@@ -17,6 +17,7 @@ install:
 script:
   - tox -e $TOX_ENV
 
+
 after_success:
   - coverage run --source django_fake_model runtests.py
   - codecov
