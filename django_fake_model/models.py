@@ -85,6 +85,7 @@ class FakeModel(models.Model):
     @classmethod
     def _class_extension(cls, source):
         if not issubclass(source, CaseExtension):
+            @wraps(source)
             class __wrap_class__ (source, CaseExtension):
                 pass
             source = __wrap_class__
