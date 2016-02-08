@@ -120,11 +120,6 @@ It will share this folder with the Docker containers, so that
 .. _Docker Compose: https://docs.docker.com/compose/
 
 
-TODO:
------
-
-* fix class decorator **@YourModel.fake_me** for nose tests
-
 Cookiecutter Tools Used in Making This Package
 ----------------------------------------------
 
