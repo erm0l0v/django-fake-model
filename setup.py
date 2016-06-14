@@ -39,6 +39,7 @@ if sys.argv[-1] == 'gen_travis':
                              (dj == '19' and py in ('py32', 'py33')))])
     allow_failure = (lambda x: x[1] == 'master'
                                or x[0] == 'py35'
+                               or x[0] == 'py32'
                                or (x[2] == 'mysql' and x[0] == 'py32' and x[1] in ['18', '17', '16']))
     env_tpl = '    - TOX_ENV={0}-dj{1}-{2}-{3}'
     envs = '\n'.join([env_tpl.format(*x) for x in versions])
