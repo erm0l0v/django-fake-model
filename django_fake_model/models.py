@@ -1,9 +1,18 @@
 from __future__ import unicode_literals
+
 from functools import wraps
 import warnings
+
+import django
+if django.VERSION >= (1, 7):
+    from django.apps.apps import get_models
+else:
+    from django.db.models import get_models
 from django.core.management.color import no_style
+from django.contrib.contenttypes.models import ContentType
 from django.db import connection, models
 from django.test import SimpleTestCase
+
 from django_fake_model.case_extension import CaseExtension
 
 
@@ -41,6 +50,7 @@ class FakeModel(models.Model):
                 cursor.execute(*raw_sql)
             finally:
                 cursor.close()
+        cls.update_contenttype()
 
     @classmethod
     def delete_table(cls):
@@ -62,6 +72,15 @@ class FakeModel(models.Model):
                     cursor.execute('DROP TABLE IF EXISTS {0}'.format(cls._meta.db_table))
             finally:
                 cursor.close()
+        cls.update_contenttype(delete=True)
+
+    @classmethod
+    def update_contenttype(cls, delete=False):
+        if ContentType in get_models():
+            ct = ContentType.objects.get_for_model(cls)
+            if ct and delete:
+                ct.delete()
+                ContentType.objects.clear_cache()
 
     @classmethod
     def fake_me(cls, source):
