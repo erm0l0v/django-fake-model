@@ -74,7 +74,7 @@ Just create a model in any file (Ex: in your test) and add decorator **@YourMode
 
     class NyModel(f.FakeModel):
         text = models.CharField(max_length=400)
-        related_model = models.ForeignKey(RelatedModel)
+        related_model = models.ForeignKey(RelatedModel, on_delete=models.CASCADE)
 
 
     @NyModel.fake_me
